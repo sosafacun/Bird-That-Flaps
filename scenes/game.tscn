@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8tqiwb82r6vx"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_o7bq1"]
+[ext_resource type="PackedScene" uid="uid://b8pfg2xhx3wme" path="res://scenes/parallax/parallax_background.tscn" id="2_56utm"]
+[ext_resource type="PackedScene" uid="uid://b5hc3hxgcqcpp" path="res://scenes/player/player.tscn" id="7_23qlo"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_o7bq1")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_56utm")]
+
+[node name="Player" parent="." instance=ExtResource("7_23qlo")]
+position = Vector2(213, 383)

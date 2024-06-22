@@ -11,9 +11,9 @@ Game #1-b
 
 **Note**: I'll be making my own assets using [Krita](https://krita.org/) for the graphics and [beepbox](https://www.beepbox.co) for the sounds / music.
 
-#Done:
+# Done:
 
-#TODO:
+# TODO:
 
 **Goals:**
 - Create a game world with a floor.
@@ -32,3 +32,4 @@ Game #1-b
 **Personal Goals:**
 - Make a BGM loop for the entirety of the game.
 - Add a "day/night" cycle (Point Light that orbits behind every scene and casts shadows)
+- Use C# instead of GDScript

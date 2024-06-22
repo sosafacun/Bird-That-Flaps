@@ -1,14 +1,13 @@
 extends CharacterBody2D
 
-var speed:int = 5
+var speed:int = 500
+@export var gravity: int = 450
+@export var jump_strength: int = -250
 
-func _process(delta):
-	if(Input.is_action_pressed("move_right_test")):
-		velocity.x += 1
-	if(Input.is_action_pressed("move_left_test")):
-		velocity.x -= 1
+func _process(_delta):
+	velocity.y = gravity
 	
-	velocity.y += 1
+	if(Input.is_action_just_pressed("select")):
+		velocity.y = jump_strength
 	move_and_slide()
-
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcmqmvfkwnulo"]
+
+[ext_resource type="Script" path="res://scenes/day_night_cycle/day_night_follow.gd" id="1_8j3iw"]
+[ext_resource type="Texture2D" uid="uid://c1tpr8ojylr1q" path="res://resources/game/sun.png" id="2_0h6s4"]
+
+[node name="DayNightFollow" type="PathFollow2D"]
+script = ExtResource("1_8j3iw")
+
+[node name="Sun" type="Sprite2D" parent="."]
+scale = Vector2(0.553165, 0.54142)
+texture = ExtResource("2_0h6s4")
+region_enabled = true
+region_rect = Rect2(28.5732, 54.3286, 395.058, 338.368)
+
+[node name="Time" type="DirectionalLight2D" parent="."]
+energy = 0.3

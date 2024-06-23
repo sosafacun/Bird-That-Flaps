@@ -1,64 +1,57 @@
-[gd_scene load_steps=6 format=3 uid="uid://1kyhkbr7ysp"]
+[gd_scene load_steps=5 format=3 uid="uid://1kyhkbr7ysp"]
 
-[ext_resource type="Script" path="res://scenes/parallax/parallax_background.gd" id="1_hfncg"]
-[ext_resource type="PackedScene" uid="uid://bcmqmvfkwnulo" path="res://scenes/parallax/day_night_follow.tscn" id="2_crpm2"]
-[ext_resource type="PackedScene" uid="uid://cbt0hmb2yp8at" path="res://scenes/objects/houses.tscn" id="2_mj2d8"]
-[ext_resource type="PackedScene" uid="uid://ydnlysjr5q0s" path="res://scenes/objects/grass.tscn" id="2_rm5vs"]
+[ext_resource type="PackedScene" uid="uid://cbt0hmb2yp8at" path="res://scenes/objects/bg/houses.tscn" id="1_ho2h6"]
+[ext_resource type="PackedScene" uid="uid://ydnlysjr5q0s" path="res://scenes/objects/collidable/grass.tscn" id="2_rm5vs"]
+[ext_resource type="PackedScene" uid="uid://bcmqmvfkwnulo" path="res://scenes/day_night_cycle/day_night_follow.tscn" id="3_r6rvf"]
 
-[sub_resource type="Curve2D" id="Curve2D_q0bnb"]
+[sub_resource type="Curve2D" id="Curve2D_ythog"]
 _data = {
-"points": PackedVector2Array(0, 239.084, 0, -239.084, -223, 437, -281.738, 1.12246, 281.738, -1.12246, 256, -118, -1.12246, -308.677, 1.12246, 308.677, 734, 405, 438.883, 0, -438.883, 0, 234, 977, 0, 0, 0, 0, -223, 437)
+"points": PackedVector2Array(0, 0, 0, 0, 1, 802, -297.302, 0, 297.302, 0, 251, 0, 0, 0, 0, 0, 503, 797, 0, 0, 0, 0, 254, 1066, 0, 0, 0, 0, 1, 802)
 }
 point_count = 5
 
 [node name="ParallaxBackground" type="Node2D"]
-script = ExtResource("1_hfncg")
 
-[node name="Sky" type="Node2D" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
 
-[node name="Skybox" type="ColorRect" parent="Sky"]
-unique_name_in_owner = true
-offset_left = -248.0
-offset_top = -8.0
-offset_right = 772.0
-offset_bottom = 804.0
-color = Color(0, 0.454902, 0.662745, 1)
-
-[node name="DayNightPath" type="Path2D" parent="."]
-position = Vector2(12, -6)
-curve = SubResource("Curve2D_q0bnb")
-
-[node name="DayNightFollow" parent="DayNightPath" instance=ExtResource("2_crpm2")]
-position = Vector2(-223, 437)
-rotation = -1.5708
-
-[node name="Houses" type="Node2D" parent="."]
-z_index = 2
+[node name="Houses" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(600, 0)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Houses" parent="Houses" instance=ExtResource("2_mj2d8")]
+[node name="Houses" parent="ParallaxBackground/Houses" instance=ExtResource("1_ho2h6")]
 position = Vector2(251, 313)
 
-[node name="Houses2" parent="Houses" instance=ExtResource("2_mj2d8")]
-position = Vector2(846, 311)
+[node name="Grass" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(600, 0)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Grass" parent="ParallaxBackground/Grass" instance=ExtResource("2_rm5vs")]
+position = Vector2(279, 790)
+
+[node name="Sun" type="Path2D" parent="."]
+visible = false
+position = Vector2(-63.2054, -3)
+scale = Vector2(1.02811, 1.00188)
+curve = SubResource("Curve2D_ythog")
+
+[node name="DayNightFollow" parent="Sun" instance=ExtResource("3_r6rvf")]
+position = Vector2(1, 802)
+rotation = -1.26862
 
 [node name="Pilars" type="Node2D" parent="."]
 z_index = 4
-
-[node name="Clouds" type="Node2D" parent="."]
-z_index = 1
-
-[node name="Grass" type="Node2D" parent="."]
-z_index = 3
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Grass" parent="Grass" instance=ExtResource("2_rm5vs")]
-position = Vector2(279, 790)
+[node name="Clouds" type="Node2D" parent="."]
+z_index = 1
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
-[node name="Grass2" parent="Grass" instance=ExtResource("2_rm5vs")]
-position = Vector2(879, 790)
-
-[connection signal="daylight" from="DayNightPath/DayNightFollow" to="." method="_on_day_night_follow_daylight"]
-[connection signal="nightlight" from="DayNightPath/DayNightFollow" to="." method="_on_day_night_follow_nightlight"]
+[connection signal="daylight" from="Sun/DayNightFollow" to="." method="_on_day_night_follow_daylight"]
+[connection signal="nightlight" from="Sun/DayNightFollow" to="." method="_on_day_night_follow_nightlight"]

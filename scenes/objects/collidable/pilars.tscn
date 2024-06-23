@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cscfb7tyme5nc"]
 
 [ext_resource type="Texture2D" uid="uid://c3ry4itv1ovgd" path="res://resources/Paralax/pilar.png" id="1_dahhx"]
-[ext_resource type="Script" path="res://scenes/objects/pilars.gd" id="1_xv0l4"]
+[ext_resource type="Script" path="res://scenes/objects/collidable/pilars.gd" id="1_xv0l4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5aoh"]
 size = Vector2(77, 269)

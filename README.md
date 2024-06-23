@@ -16,6 +16,7 @@ Game #1-b
 **Goals:**
 
 - Create a game world with a floor.
+- Add obstacles on the right of the game area. The obstacles should slide across the screen toward the left. The obstacles will appear in pairs, with a vertical gap between them.
 
 **Stretch Goals:**
 
@@ -31,7 +32,7 @@ Game #1-b
 
 **Goals:**
 
-- Add obstacles on the right of the game area. The obstacles should slide across the screen toward the left. The obstacles will appear in pairs, with a vertical gap between them.
+
 - Add an object that represents the main character.
 - Apply a constant force to the character so it falls to the floor.
 - Detect when the character collides with the floor or obstacles, and reset the game when a collision occurs.

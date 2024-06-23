@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cscfb7tyme5nc"]
+[gd_scene load_steps=10 format=3 uid="uid://cscfb7tyme5nc"]
 
 [ext_resource type="Texture2D" uid="uid://c3ry4itv1ovgd" path="res://resources/Paralax/pilar.png" id="1_dahhx"]
 [ext_resource type="Script" path="res://scenes/objects/collidable/pilars.gd" id="1_xv0l4"]
+[ext_resource type="Script" path="res://scenes/objects/collidable/TopPilar.gd" id="2_hukwp"]
+[ext_resource type="Script" path="res://scenes/objects/collidable/BottomPilar.gd" id="4_f1adl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5aoh"]
 size = Vector2(77, 269)
@@ -29,6 +31,8 @@ position = Vector2(1, 195)
 rotation = 3.14159
 scale = Vector2(1, 2)
 collision_layer = 2
+collision_mask = 5
+script = ExtResource("2_hukwp")
 
 [node name="Pilar" type="Sprite2D" parent="TopPilar"]
 texture = ExtResource("1_dahhx")
@@ -52,6 +56,8 @@ shape = SubResource("SegmentShape2D_0jr7c")
 position = Vector2(5, 849)
 scale = Vector2(1, 2)
 collision_layer = 2
+collision_mask = 5
+script = ExtResource("4_f1adl")
 
 [node name="Pilar2" type="Sprite2D" parent="BottomPilar"]
 texture = ExtResource("1_dahhx")
@@ -74,7 +80,6 @@ shape = SubResource("SegmentShape2D_p8jha")
 shape = SubResource("SegmentShape2D_0jr7c")
 
 [node name="ScoringArea" type="Area2D" parent="."]
-collision_layer = 2
 
 [node name="ScoringCollision" type="CollisionShape2D" parent="ScoringArea"]
 position = Vector2(1.5, 521.5)

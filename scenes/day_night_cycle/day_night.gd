@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-
-
 func _on_day_night_follow_daylight():
 	modulate_skybox("0092d3")
 

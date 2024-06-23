@@ -5,9 +5,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_ncyvi"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1, 802, -297.302, 0, 297.302, 0, 251, 0, 0, 0, 0, 0, 503, 797, 0, 0, 0, 0, 254, 1066, 0, 0, 0, 0, 1, 802)
+"points": PackedVector2Array(0, 0, 0, 0, 16.735, 585.714, -297.302, 0, 297.302, 0, 251, 0, 0, 0, 0, 0, 504.037, 645.018, 0, 0, 0, 0, 460.267, 1030.12, 0, 0, 0, 0, 264.763, 1112.86, 0, 0, 0, 0, 254, 1066, 0, 0, 0, 0, 50.778, 978.875, 0, 0, 0, 0, 16.735, 587.179)
 }
-point_count = 5
+point_count = 8
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_p1ufj")
@@ -21,12 +21,19 @@ offset_bottom = 805.0
 
 [node name="Sun" type="Path2D" parent="."]
 position = Vector2(-20.2054, -3)
-scale = Vector2(1.02811, 1.00188)
+scale = Vector2(1.02811, 1.50334)
 curve = SubResource("Curve2D_ncyvi")
 
-[node name="DayNightFollow" parent="Sun" instance=ExtResource("2_07jf3")]
-position = Vector2(1, 802)
-rotation = -1.26862
+[node name="Day" parent="Sun" instance=ExtResource("2_07jf3")]
+position = Vector2(13.1394, 536.809)
+rotation = -1.62353
+progress = 49.0545
+is_sun = true
 
-[connection signal="daylight" from="Sun/DayNightFollow" to="." method="_on_day_night_follow_daylight"]
-[connection signal="nightlight" from="Sun/DayNightFollow" to="." method="_on_day_night_follow_nightlight"]
+[node name="Night" parent="Sun" instance=ExtResource("2_07jf3")]
+position = Vector2(506.247, 538.132)
+rotation = 1.55916
+progress = 1356.09
+
+[connection signal="daylight" from="Sun/Day" to="." method="_on_day_night_follow_daylight"]
+[connection signal="nightlight" from="Sun/Day" to="." method="_on_day_night_follow_nightlight"]

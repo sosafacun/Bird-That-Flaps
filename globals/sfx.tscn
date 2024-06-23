@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://spf3np1qts81"]
+
+[ext_resource type="Script" path="res://globals/sfx.gd" id="1_0y7dy"]
+[ext_resource type="AudioStream" uid="uid://dc2f45q7hhtql" path="res://resources/audio/after-loss.wav" id="1_qssyx"]
+[ext_resource type="AudioStream" uid="uid://bgscwqkf0cqae" path="res://resources/audio/BGM.wav" id="2_w8yqr"]
+[ext_resource type="AudioStream" uid="uid://bawxfqxcmf662" path="res://resources/audio/loss-sound.wav" id="3_6igge"]
+[ext_resource type="AudioStream" uid="uid://b26a57760xpyp" path="res://resources/audio/score-sound-short.wav" id="4_nvs1n"]
+
+[node name="SFX" type="Node"]
+script = ExtResource("1_0y7dy")
+
+[node name="0 - BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_w8yqr")
+
+[node name="1 - Score" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nvs1n")
+
+[node name="2 - Loss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6igge")
+
+[node name="3 - AfterLoss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_qssyx")

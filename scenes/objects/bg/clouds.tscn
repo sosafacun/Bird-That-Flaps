@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://1wuyifabxqbh"]
+
+[ext_resource type="Script" path="res://scenes/objects/bg/clouds.gd" id="1_1k0em"]
+[ext_resource type="Texture2D" uid="uid://dea5okwsd1x2p" path="res://resources/Paralax/cloud1.png" id="1_x8nob"]
+[ext_resource type="Script" path="res://scenes/objects/bg/DespawnBody.gd" id="2_7a0ld"]
+[ext_resource type="Texture2D" uid="uid://cnvvmeijps7j" path="res://resources/Paralax/Cloud2.png" id="2_13hqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiaki"]
+size = Vector2(24, 571.5)
+
+[node name="Clouds" type="Node2D"]
+script = ExtResource("1_1k0em")
+
+[node name="DespawnBody" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_7a0ld")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DespawnBody"]
+shape = SubResource("RectangleShape2D_eiaki")
+
+[node name="Cloud1Bottom" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+texture = ExtResource("1_x8nob")
+
+[node name="Cloud2Bottom" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(66, 3)
+texture = ExtResource("2_13hqr")
+
+[node name="Cloud1Top" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("1_x8nob")
+
+[node name="Cloud2Top" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("2_13hqr")

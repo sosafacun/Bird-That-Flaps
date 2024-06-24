@@ -1,14 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://1kyhkbr7ysp"]
+[gd_scene load_steps=3 format=3 uid="uid://1kyhkbr7ysp"]
 
 [ext_resource type="PackedScene" uid="uid://cbt0hmb2yp8at" path="res://scenes/objects/bg/houses.tscn" id="1_ho2h6"]
 [ext_resource type="PackedScene" uid="uid://ydnlysjr5q0s" path="res://scenes/objects/collidable/grass.tscn" id="2_rm5vs"]
-[ext_resource type="PackedScene" uid="uid://bcmqmvfkwnulo" path="res://scenes/day_night_cycle/day_night_follow.tscn" id="3_r6rvf"]
-
-[sub_resource type="Curve2D" id="Curve2D_ythog"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1, 802, -297.302, 0, 297.302, 0, 251, 0, 0, 0, 0, 0, 503, 797, 0, 0, 0, 0, 254, 1066, 0, 0, 0, 0, 1, 802)
-}
-point_count = 5
 
 [node name="ParallaxBackground" type="Node2D"]
 
@@ -32,26 +25,3 @@ metadata/_edit_group_ = true
 
 [node name="Grass" parent="ParallaxBackground/Grass" instance=ExtResource("2_rm5vs")]
 position = Vector2(279, 790)
-
-[node name="Sun" type="Path2D" parent="."]
-visible = false
-position = Vector2(-63.2054, -3)
-scale = Vector2(1.02811, 1.00188)
-curve = SubResource("Curve2D_ythog")
-
-[node name="DayNightFollow" parent="Sun" instance=ExtResource("3_r6rvf")]
-position = Vector2(1, 802)
-rotation = -1.26862
-
-[node name="Pilars" type="Node2D" parent="."]
-z_index = 4
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
-
-[node name="Clouds" type="Node2D" parent="."]
-z_index = 1
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
-
-[connection signal="daylight" from="Sun/DayNightFollow" to="." method="_on_day_night_follow_daylight"]
-[connection signal="nightlight" from="Sun/DayNightFollow" to="." method="_on_day_night_follow_nightlight"]

@@ -29,13 +29,13 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Day" parent="Sun" instance=ExtResource("2_07jf3")]
-position = Vector2(13.1394, 536.809)
+position = Vector2(13.1395, 536.809)
 rotation = -1.62353
 progress = 49.0545
 is_sun = true
 
 [node name="Night" parent="Sun" instance=ExtResource("2_07jf3")]
-position = Vector2(506.247, 538.132)
+position = Vector2(506.248, 538.138)
 rotation = 1.55916
 progress = 1356.09
 

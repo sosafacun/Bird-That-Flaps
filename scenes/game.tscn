@@ -54,6 +54,8 @@ metadata/_edit_lock_ = true
 
 [node name="Pilars" type="Node2D" parent="."]
 
+[node name="Clouds" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("2_7ttje")]
 z_index = 1
 position = Vector2(70, 400)
@@ -98,6 +100,10 @@ layer = -2
 [node name="Pilar1CD" type="Timer" parent="Timers"]
 wait_time = 0.5
 
+[node name="CloudCD" type="Timer" parent="Timers"]
+wait_time = 0.3
+
 [connection signal="game_started" from="." to="." method="_on_game_started"]
 [connection signal="body_entered" from="Player/Camera2D/DespawnArea" to="." method="_on_despawn_area_body_entered"]
 [connection signal="timeout" from="Timers/Pilar1CD" to="." method="_on_pilar_1cd_timeout"]
+[connection signal="timeout" from="Timers/CloudCD" to="." method="_on_cloud_cd_timeout"]

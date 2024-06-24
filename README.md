@@ -32,7 +32,6 @@ Game #1-b
 
 **Goals:**
 
-
 - Add an object that represents the main character.
 - Apply a constant force to the character so it falls to the floor.
 - Detect when the character collides with the floor or obstacles, and reset the game when a collision occurs.

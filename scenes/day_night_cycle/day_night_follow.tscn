@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcmqmvfkwnulo"]
 
 [ext_resource type="Script" path="res://scenes/day_night_cycle/day_night_follow.gd" id="1_8j3iw"]
-[ext_resource type="Texture2D" uid="uid://c1tpr8ojylr1q" path="res://resources/game/sun.png" id="2_0h6s4"]
-[ext_resource type="Texture2D" uid="uid://cb1rxuw24i8gy" path="res://resources/game/moon.png" id="2_8svcb"]
+[ext_resource type="Texture2D" uid="uid://c1tpr8ojylr1q" path="res://scenes/day_night_cycle/sun.png" id="2_0h6s4"]
+[ext_resource type="Texture2D" uid="uid://cb1rxuw24i8gy" path="res://scenes/day_night_cycle/moon.png" id="2_8svcb"]
 
 [node name="DayNightFollow" type="PathFollow2D"]
 script = ExtResource("1_8j3iw")

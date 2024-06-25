@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://1wuyifabxqbh"]
+
+[ext_resource type="Script" path="res://scenes/objects/clouds/clouds.gd" id="1_0wk6a"]
+[ext_resource type="Texture2D" uid="uid://dea5okwsd1x2p" path="res://scenes/objects/clouds/cloud1.png" id="2_7ybaq"]
+[ext_resource type="Texture2D" uid="uid://cnvvmeijps7j" path="res://scenes/objects/clouds/Cloud2.png" id="3_artga"]
+
+[node name="Clouds" type="Node2D" groups=["Clouds"]]
+script = ExtResource("1_0wk6a")
+
+[node name="Cloud1Bottom" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+texture = ExtResource("2_7ybaq")
+
+[node name="Cloud2Bottom" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(66, 3)
+texture = ExtResource("3_artga")
+
+[node name="Cloud1Top" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("2_7ybaq")
+
+[node name="Cloud2Top" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("3_artga")
+
+[node name="CloudDespawn" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+
+[connection signal="timeout" from="CloudDespawn" to="." method="_on_cloud_despawn_timeout"]

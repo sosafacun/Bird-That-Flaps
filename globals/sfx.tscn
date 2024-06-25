@@ -11,6 +11,7 @@ script = ExtResource("1_0y7dy")
 
 [node name="0 - BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_w8yqr")
+volume_db = -10.0
 
 [node name="1 - Score" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_nvs1n")
@@ -20,3 +21,5 @@ stream = ExtResource("3_6igge")
 
 [node name="3 - AfterLoss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_qssyx")
+
+[connection signal="finished" from="2 - Loss" to="." method="_on___loss_finished"]

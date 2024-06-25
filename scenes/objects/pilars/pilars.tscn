@@ -18,7 +18,7 @@ b = Vector2(-38, -116.5)
 size = Vector2(76, 269.333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t1am"]
-size = Vector2(73, 181)
+size = Vector2(10, 181)
 
 [node name="Pilars" type="Node2D" groups=["Pilars"]]
 position = Vector2(35, -30)
@@ -42,6 +42,7 @@ shape = SubResource("RectangleShape2D_n5aoh")
 metadata/_edit_lock_ = true
 
 [node name="TopPilarArea" type="Area2D" parent="TopPilar"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopPilar/TopPilarArea"]
 shape = SubResource("SegmentShape2D_p8jha")
@@ -67,6 +68,7 @@ metadata/_edit_lock_ = true
 
 [node name="BottomPilarArea" type="Area2D" parent="BottomPilar"]
 position = Vector2(-1, 0)
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPilar/BottomPilarArea"]
 position = Vector2(-72, 0)
@@ -78,7 +80,7 @@ shape = SubResource("SegmentShape2D_0jr7c")
 [node name="ScoringArea" type="Area2D" parent="."]
 
 [node name="ScoringCollision" type="CollisionShape2D" parent="ScoringArea"]
-position = Vector2(1.5, 521.5)
+position = Vector2(44, 521.5)
 shape = SubResource("RectangleShape2D_0t1am")
 
 [node name="Timers" type="Node" parent="."]

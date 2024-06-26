@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var jump_strength: int = -275
+@export var jump_strength: int = -300
 @export var grav: int = 0
 
 func _physics_process(_delta):

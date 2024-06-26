@@ -39,6 +39,7 @@ Game #1-b
 # TODO:
 
 **Goals:**
+
 - All done
 
 **Stretch Goals:**

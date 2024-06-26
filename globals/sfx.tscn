@@ -18,8 +18,10 @@ stream = ExtResource("4_nvs1n")
 
 [node name="2 - Loss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6igge")
+volume_db = -10.0
 
 [node name="3 - AfterLoss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_qssyx")
+volume_db = -10.0
 
 [connection signal="finished" from="2 - Loss" to="." method="_on___loss_finished"]

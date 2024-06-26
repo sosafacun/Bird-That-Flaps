@@ -1,95 +1,59 @@
-[gd_scene load_steps=8 format=3 uid="uid://cscfb7tyme5nc"]
+[gd_scene load_steps=5 format=3 uid="uid://bsmbmwt146eh8"]
 
 [ext_resource type="Script" path="res://scenes/objects/pilars/pilars.gd" id="1_ilaq5"]
 [ext_resource type="Texture2D" uid="uid://c3ry4itv1ovgd" path="res://scenes/objects/pilars/pilar.png" id="2_sujym"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5aoh"]
-size = Vector2(77, 269)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dipp6"]
+size = Vector2(75, 528)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_p8jha"]
-a = Vector2(35, -117)
-b = Vector2(35, 150)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny2t8"]
+size = Vector2(35, 165)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_0jr7c"]
-a = Vector2(34, -116.5)
-b = Vector2(-38, -116.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h4ei"]
-size = Vector2(76, 269.333)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t1am"]
-size = Vector2(10, 181)
-
-[node name="Pilars" type="Node2D" groups=["Pilars"]]
-position = Vector2(35, -30)
+[node name="Pilars" type="StaticBody2D" groups=["Pilars"]]
+collision_layer = 16
 script = ExtResource("1_ilaq5")
 
-[node name="TopPilar" type="StaticBody2D" parent="."]
-position = Vector2(1, 195)
-rotation = 3.14159
-scale = Vector2(1, 2)
-collision_layer = 2
-collision_mask = 5
-
-[node name="Pilar" type="Sprite2D" parent="TopPilar"]
+[node name="TopPilar" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0.000224081, -358.471)
+rotation = -3.14159
+scale = Vector2(1, 1.94204)
 texture = ExtResource("2_sujym")
-metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPilar"]
-visible = false
-position = Vector2(-1.5, 15.5)
-shape = SubResource("RectangleShape2D_n5aoh")
-metadata/_edit_lock_ = true
+[node name="PilarCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -393.5)
+shape = SubResource("RectangleShape2D_dipp6")
 
-[node name="TopPilarArea" type="Area2D" parent="TopPilar"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPilar/TopPilarArea"]
-shape = SubResource("SegmentShape2D_p8jha")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="TopPilar/TopPilarArea"]
-shape = SubResource("SegmentShape2D_0jr7c")
-
-[node name="BottomPilar" type="StaticBody2D" parent="."]
-position = Vector2(5, 849)
-scale = Vector2(1, 2)
-collision_layer = 2
-collision_mask = 5
-
-[node name="Pilar2" type="Sprite2D" parent="BottomPilar"]
+[node name="TopPilar2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 316.042)
+scale = Vector2(1, 1.99306)
 texture = ExtResource("2_sujym")
-metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPilar"]
-visible = false
-position = Vector2(0, 15.3333)
-shape = SubResource("RectangleShape2D_4h4ei")
-metadata/_edit_lock_ = true
+[node name="PilarCollision2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 345)
+shape = SubResource("RectangleShape2D_dipp6")
 
-[node name="BottomPilarArea" type="Area2D" parent="BottomPilar"]
-position = Vector2(-1, 0)
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPilar/BottomPilarArea"]
-position = Vector2(-72, 0)
-shape = SubResource("SegmentShape2D_p8jha")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="BottomPilar/BottomPilarArea"]
-shape = SubResource("SegmentShape2D_0jr7c")
-
-[node name="ScoringArea" type="Area2D" parent="."]
-
-[node name="ScoringCollision" type="CollisionShape2D" parent="ScoringArea"]
-position = Vector2(44, 521.5)
-shape = SubResource("RectangleShape2D_0t1am")
-
-[node name="Timers" type="Node" parent="."]
-
-[node name="PilarDespawnCD" type="Timer" parent="Timers"]
+[node name="PilarDespawnCD" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
 
-[connection signal="body_entered" from="TopPilar/TopPilarArea" to="." method="_on_top_pilar_area_body_entered"]
-[connection signal="body_entered" from="BottomPilar/BottomPilarArea" to="." method="_on_bottom_pilar_area_body_entered"]
+[node name="ScoringArea" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoringArea"]
+position = Vector2(53.5, -25.5)
+shape = SubResource("RectangleShape2D_ny2t8")
+
+[node name="LosinArea" type="Area2D" parent="."]
+
+[node name="LosingCollision" type="CollisionShape2D" parent="LosinArea"]
+position = Vector2(0, 345)
+shape = SubResource("RectangleShape2D_dipp6")
+
+[node name="LosingCollision2" type="CollisionShape2D" parent="LosinArea"]
+position = Vector2(0, -393.5)
+shape = SubResource("RectangleShape2D_dipp6")
+
 [connection signal="body_entered" from="ScoringArea" to="." method="_on_scoring_area_body_entered"]
-[connection signal="timeout" from="Timers/PilarDespawnCD" to="." method="_on_pilar_despawn_cd_timeout"]
+[connection signal="body_entered" from="LosinArea" to="." method="_on_losin_area_body_entered"]

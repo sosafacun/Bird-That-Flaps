@@ -16,8 +16,11 @@ Game #1-b
 **Goals:**
 
 - Create a game world with a floor.
+- Add an object that represents the main character.
+- Apply a constant force to the character so it falls to the floor.
 - Add obstacles on the right of the game area. The obstacles should slide across the screen toward the left. The obstacles will appear in pairs, with a vertical gap between them.
 - Accumulate one point for each obstacle that the player passes. Display the score.
+- Detect when the character collides with the floor or obstacles
 
 **Stretch Goals:**
 
@@ -33,9 +36,7 @@ Game #1-b
 
 **Goals:**
 
-- Add an object that represents the main character.
-- Apply a constant force to the character so it falls to the floor.
-- Detect when the character collides with the floor or obstacles, and reset the game when a collision occurs.
+- Reset the game when a collision occurs.
 
 **Stretch Goals:**
 
@@ -45,3 +46,4 @@ Game #1-b
 
 **Personal Goals:**
 
+- All Done

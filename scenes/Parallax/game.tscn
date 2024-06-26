@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8tqiwb82r6vx"]
+[gd_scene load_steps=11 format=3 uid="uid://c8tqiwb82r6vx"]
 
 [ext_resource type="Script" path="res://scenes/Parallax/game.gd" id="1_g7l5y"]
 [ext_resource type="PackedScene" uid="uid://b5hc3hxgcqcpp" path="res://scenes/player/player.tscn" id="2_7ttje"]
@@ -9,14 +9,20 @@
 [ext_resource type="Texture2D" uid="uid://ryk6am7ot26g" path="res://scenes/Parallax/houses.png" id="5_w416y"]
 [ext_resource type="PackedScene" uid="uid://c17pbnqofmkgw" path="res://scenes/day_night_cycle/day_night.tscn" id="6_fmq6m"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j11ce"]
+size = Vector2(512, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j85h"]
+size = Vector2(56, 803)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_g7l5y")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -49.0
-offset_right = 450.0
+offset_left = -1.0
+offset_right = 499.0
 offset_bottom = 798.0
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
@@ -47,6 +53,23 @@ offset_bottom = -46.0
 texture = ExtResource("3_fltnf")
 expand_mode = 4
 
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_top = 94.0
+offset_right = 502.0
+offset_bottom = 768.0
+theme = ExtResource("3_28wok")
+
+[node name="CurrentScoreText" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Current Score"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
 [node name="ParallaxBG" type="Node2D" parent="."]
 z_index = -2
 script = ExtResource("4_0lrqi")
@@ -56,14 +79,23 @@ position = Vector2(625, -1)
 metadata/_edit_lock_ = true
 
 [node name="GrassNode" type="Node2D" parent="ParallaxBG"]
+z_index = 9
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Grass" parent="ParallaxBG/GrassNode" instance=ExtResource("4_b2ge7")]
+z_index = 1
 position = Vector2(251, 790)
+collision_layer = 16
 
 [node name="Grass2" parent="ParallaxBG/GrassNode" instance=ExtResource("4_b2ge7")]
+z_index = 1
 position = Vector2(851, 790)
+collision_layer = 16
 
 [node name="HousesNode" type="Node2D" parent="ParallaxBG"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Houses" type="Sprite2D" parent="ParallaxBG/HousesNode"]
 z_index = -1
@@ -82,32 +114,28 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("2_7ttje")]
 z_index = 1
 position = Vector2(70, 400)
-collision_mask = 11
+collision_mask = 27
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-offset = Vector2(130, 0)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Player/Camera2D"]
-offset_left = -120.0
-offset_top = -306.0
-offset_right = 380.0
-offset_bottom = 368.0
-theme = ExtResource("3_28wok")
-
-[node name="CurrentScoreText" type="Label" parent="Player/Camera2D/VBoxContainer"]
-layout_mode = 2
-text = "Current Score"
-horizontal_alignment = 1
-
-[node name="ScoreLabel" type="Label" parent="Player/Camera2D/VBoxContainer"]
-layout_mode = 2
-text = "0"
-horizontal_alignment = 1
-
 [node name="CanvasLayer" parent="Player" instance=ExtResource("6_fmq6m")]
 layer = -2
+
+[node name="Limits" type="Node2D" parent="."]
+
+[node name="UpperLimit" type="StaticBody2D" parent="Limits"]
+collision_layer = 2
+
+[node name="UpperLimitCollision" type="CollisionShape2D" parent="Limits/UpperLimit"]
+position = Vector2(246, 60)
+shape = SubResource("RectangleShape2D_j11ce")
+
+[node name="SideLimit" type="StaticBody2D" parent="Limits"]
+collision_layer = 2
+
+[node name="SideLimitCollision" type="CollisionShape2D" parent="Limits/SideLimit"]
+position = Vector2(18, 391.5)
+shape = SubResource("RectangleShape2D_1j85h")
 
 [node name="Timers" type="Node" parent="."]
 
@@ -118,6 +146,6 @@ wait_time = 2.0
 wait_time = 1.75
 
 [connection signal="game_started" from="." to="ParallaxBG" method="_on_game_game_started"]
-[connection signal="stop" from="ParallaxBG" to="ParallaxBG" method="_on_stop"]
+[connection signal="level_up" from="ParallaxBG" to="ParallaxBG" method="_on_level_up"]
 [connection signal="timeout" from="Timers/PilarSpawn" to="ParallaxBG" method="_on_pilar_spawn_timeout"]
 [connection signal="timeout" from="Timers/CloudSpawn" to="ParallaxBG" method="_on_cloud_spawn_timeout"]

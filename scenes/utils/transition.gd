@@ -3,8 +3,13 @@ extends ColorRect
 func _ready():
 	var tween: Tween = create_tween()
 	tween.tween_property($"End-screen", "position", Vector2(250, 400), 0.5)
-	$"End-screen/ScreenContainer".visible = true
-	$"End-screen/ScreenContainer/Score".text = str(Globals.score)
+	$"End-screen/CurrentStats".visible = true
+	$"End-screen/CurrentStats/Score".text = str(Globals.score)
+
+func _process(_delta):
+	if($"End-screen/CurrentStats/Highscore".visible == true):
+		$AnimationPlayer.play("HighScore")
+
 
 func _on_restart_pressed():
 	reset_status()

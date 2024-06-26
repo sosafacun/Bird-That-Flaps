@@ -82,4 +82,4 @@ func _on_pilars_game_lost():
 	var tween: Tween = create_tween()
 	tween.tween_property($"../UI/BlackScreen", "color", Color('000000'), 1)
 	await tween.finished
-	get_tree().change_scene_to_file("res://scenes/utils/transition.tscn")
+	get_tree().change_scene_to_file("res://scenes/utils/end_screen.tscn")

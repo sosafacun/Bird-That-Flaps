@@ -1,0 +1,184 @@
+[gd_scene load_steps=13 format=3 uid="uid://bibkkmlmgmom8"]
+
+[ext_resource type="Script" path="res://scenes/utils/transition.gd" id="1_2gcdg"]
+[ext_resource type="Texture2D" uid="uid://saq3w5y1hhds" path="res://scenes/utils/end-screen.png" id="2_gf8i3"]
+[ext_resource type="Theme" uid="uid://54com4xaym22" path="res://resources/fonts/theme.tres" id="3_ety3j"]
+[ext_resource type="Texture2D" uid="uid://b3ck1pilsl6sk" path="res://scenes/utils/try-again-buttons/try-again-normal.png" id="4_fvlqg"]
+[ext_resource type="Texture2D" uid="uid://k3prxw1sjii4" path="res://scenes/utils/try-again-buttons/return-main-menu-pressed.png" id="5_6ytpa"]
+[ext_resource type="Texture2D" uid="uid://wd4kka3tosiw" path="res://scenes/utils/try-again-buttons/return-main-menu-hover.png" id="6_vcoxr"]
+[ext_resource type="Texture2D" uid="uid://dr7eaf7d0fret" path="res://scenes/utils/end-screen-buttons/return-main-menu-normal.png" id="7_q32a5"]
+[ext_resource type="Texture2D" uid="uid://bsfuql54egorp" path="res://scenes/utils/end-screen-buttons/return-main-menu-pressed.png" id="8_suao3"]
+[ext_resource type="Texture2D" uid="uid://cpeq4d8hjdln0" path="res://scenes/utils/end-screen-buttons/return-main-menu-hover.png" id="9_ixf07"]
+
+[sub_resource type="Animation" id="Animation_7n04k"]
+resource_name = "HighScore"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("End-screen/CurrentStats/Highscore:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ixjfk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("End-screen/CurrentStats/Highscore:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cimsm"]
+_data = {
+"HighScore": SubResource("Animation_7n04k"),
+"RESET": SubResource("Animation_ixjfk")
+}
+
+[node name="EndScreen" type="ColorRect"]
+offset_right = 501.0
+offset_bottom = 800.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_2gcdg")
+
+[node name="End-screen" type="Sprite2D" parent="."]
+position = Vector2(750, 400)
+texture = ExtResource("2_gf8i3")
+metadata/_edit_lock_ = true
+
+[node name="CurrentStats" type="Control" parent="End-screen"]
+layout_mode = 3
+anchor_left = 0.078
+anchor_top = 0.124
+anchor_right = 0.914
+anchor_bottom = 0.908
+offset_left = -250.0
+offset_top = -250.0
+offset_right = -250.0
+offset_bottom = -250.0
+theme = ExtResource("3_ety3j")
+
+[node name="Highscore" type="Label" parent="End-screen/CurrentStats"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -297.0
+offset_right = 240.0
+offset_bottom = -254.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.453533
+size_flags_vertical = 0
+theme = ExtResource("3_ety3j")
+theme_override_colors/font_color = Color(0, 1, 0.0980392, 1)
+text = "Highscore!"
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="End-screen/CurrentStats"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -54.0
+offset_right = 194.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enter your name"
+horizontal_alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="End-screen/CurrentStats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.151
+anchor_top = 0.474
+anchor_right = 0.833
+anchor_bottom = 0.582
+offset_left = -0.118004
+offset_top = 0.191986
+offset_right = -0.194031
+offset_bottom = -0.144012
+alignment = 1
+
+[node name="Score" type="Label" parent="End-screen/CurrentStats"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -130.0
+offset_right = 201.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="Restart" type="TextureButton" parent="End-screen/CurrentStats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.208
+anchor_top = 0.63
+anchor_right = 0.806
+anchor_bottom = 0.758
+offset_left = 0.0559998
+offset_top = 0.039978
+offset_right = 250.092
+offset_bottom = 49.864
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("4_fvlqg")
+texture_pressed = ExtResource("5_6ytpa")
+texture_hover = ExtResource("6_vcoxr")
+stretch_mode = 0
+
+[node name="MainMenu" type="TextureButton" parent="End-screen/CurrentStats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.211
+anchor_top = 0.806
+anchor_right = 0.809
+anchor_bottom = 0.934
+offset_left = -0.198006
+offset_top = 0.0479736
+offset_right = 249.838
+offset_bottom = 49.872
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("7_q32a5")
+texture_pressed = ExtResource("8_suao3")
+texture_hover = ExtResource("9_ixf07")
+stretch_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cimsm")
+}
+
+[connection signal="pressed" from="End-screen/CurrentStats/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="End-screen/CurrentStats/MainMenu" to="." method="_on_main_menu_pressed"]

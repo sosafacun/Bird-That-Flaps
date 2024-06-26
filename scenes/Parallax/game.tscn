@@ -5,15 +5,15 @@
 [ext_resource type="Theme" uid="uid://54com4xaym22" path="res://resources/fonts/theme.tres" id="3_28wok"]
 [ext_resource type="Texture2D" uid="uid://dm1gpye3281mk" path="res://scenes/ui/main_menu/mouse-click.png" id="3_fltnf"]
 [ext_resource type="Script" path="res://scenes/Parallax/ParallaxBG.gd" id="4_0lrqi"]
-[ext_resource type="PackedScene" uid="uid://ydnlysjr5q0s" path="res://scenes/objects/grass/grass.tscn" id="4_b2ge7"]
+[ext_resource type="Texture2D" uid="uid://bxa7l8npcgfch" path="res://scenes/Parallax/grass.png" id="5_4duhu"]
 [ext_resource type="Texture2D" uid="uid://ryk6am7ot26g" path="res://scenes/Parallax/houses.png" id="5_w416y"]
 [ext_resource type="PackedScene" uid="uid://c17pbnqofmkgw" path="res://scenes/day_night_cycle/day_night.tscn" id="6_fmq6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j11ce"]
 size = Vector2(512, 140)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j85h"]
-size = Vector2(56, 803)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqg3p"]
+size = Vector2(706, 82)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_g7l5y")
@@ -88,17 +88,17 @@ position = Vector2(625, -1)
 metadata/_edit_lock_ = true
 
 [node name="GrassNode" type="Node2D" parent="ParallaxBG"]
-z_index = 9
-
-[node name="Grass" parent="ParallaxBG/GrassNode" instance=ExtResource("4_b2ge7")]
 z_index = 1
-position = Vector2(-295, 793)
-collision_layer = 16
 
-[node name="Grass2" parent="ParallaxBG/GrassNode" instance=ExtResource("4_b2ge7")]
-z_index = 1
-position = Vector2(305, 796)
-collision_layer = 16
+[node name="Grass" type="Sprite2D" parent="ParallaxBG/GrassNode"]
+z_index = -1
+position = Vector2(828, 404)
+texture = ExtResource("5_4duhu")
+
+[node name="Grass2" type="Sprite2D" parent="ParallaxBG/GrassNode"]
+z_index = -1
+position = Vector2(228, 404)
+texture = ExtResource("5_4duhu")
 
 [node name="HousesNode" type="Node2D" parent="ParallaxBG"]
 metadata/_edit_group_ = true
@@ -137,12 +137,11 @@ collision_layer = 2
 position = Vector2(246, 60)
 shape = SubResource("RectangleShape2D_j11ce")
 
-[node name="SideLimit" type="StaticBody2D" parent="Limits"]
-collision_layer = 2
+[node name="BottomLimit" type="Area2D" parent="Limits"]
 
-[node name="SideLimitCollision" type="CollisionShape2D" parent="Limits/SideLimit"]
-position = Vector2(18, 391.5)
-shape = SubResource("RectangleShape2D_1j85h")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/BottomLimit"]
+position = Vector2(269, 756)
+shape = SubResource("RectangleShape2D_kqg3p")
 
 [node name="Timers" type="Node" parent="."]
 
@@ -154,5 +153,6 @@ wait_time = 1.75
 
 [connection signal="game_started" from="." to="ParallaxBG" method="_on_game_game_started"]
 [connection signal="level_up" from="ParallaxBG" to="ParallaxBG" method="_on_level_up"]
+[connection signal="body_entered" from="Limits/BottomLimit" to="ParallaxBG" method="_on_bottom_limit_body_entered"]
 [connection signal="timeout" from="Timers/PilarSpawn" to="ParallaxBG" method="_on_pilar_spawn_timeout"]
 [connection signal="timeout" from="Timers/CloudSpawn" to="ParallaxBG" method="_on_cloud_spawn_timeout"]

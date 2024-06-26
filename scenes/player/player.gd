@@ -16,6 +16,8 @@ func jump() -> void:
 	$AnimationPlayer.play("flap")
 
 func disable_collision() -> void:
+	$AnimationPlayer.stop()
 	$PlayerSprite.visible = false
+	$"Winged-bird-up".visible = false
 	$"Bird-dead".visible = true
 	$PlayerCollision.set_deferred("disabled", true)

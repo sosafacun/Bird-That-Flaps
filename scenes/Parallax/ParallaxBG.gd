@@ -65,16 +65,13 @@ func _on_pilar_spawn_timeout():
 func _on_cloud_spawn_timeout():
 	create_clouds()
 
-func _on_stop():
-	print('stop')
-
 func _on_level_up():
 	if(spawn_speed >= 0.75):
 		spawn_speed -= spawn_timer_cut
 	else:
 		pass
 
-func _on_pilars_game_lost():
+func stop():
 	CLOUD_SPEED = 0
 	HOUSE_SPEED = 0
 	GRASS_SPEED = 0
@@ -83,3 +80,11 @@ func _on_pilars_game_lost():
 	tween.tween_property($"../UI/BlackScreen", "color", Color('000000'), 1)
 	await tween.finished
 	get_tree().change_scene_to_file("res://scenes/utils/end_screen.tscn")
+	
+
+func _on_pilars_game_lost():
+	stop()
+
+func _on_bottom_limit_body_entered(body):
+	SFX.play_loss()
+	stop()

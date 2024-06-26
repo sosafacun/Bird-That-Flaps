@@ -4,7 +4,7 @@ extends RigidBody2D
 @export var grav: int = 0
 
 func _physics_process(_delta):
-	if(Globals.is_game_active == true):
+	if(Globals.is_game_active):
 		grav = 1
 		gravity_scale = grav
 	else:
@@ -13,7 +13,8 @@ func _physics_process(_delta):
 func jump() -> void:
 	set_linear_velocity(Vector2(0,0))
 	linear_velocity.y += jump_strength
-	$AnimationPlayer.play("flap")
+	if(!Globals.is_game_finished):
+		$AnimationPlayer.play("flap")
 
 func disable_collision() -> void:
 	$AnimationPlayer.stop()

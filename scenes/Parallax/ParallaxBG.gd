@@ -10,8 +10,6 @@ var HOUSE_SPEED: int = -30
 @onready var spawn_speed: float = 2
 @onready var spawn_timer_cut: float = 0.25
 
-var game_started: bool = false
-
 var pilars: PackedScene = preload("res://scenes/objects/pilars/pilars.tscn")
 var cloud: PackedScene = preload("res://scenes/objects/clouds/clouds.tscn")
 
@@ -23,7 +21,7 @@ signal level_up
 
 func _process(delta):
 	
-	if(game_started):
+	if(Globals.is_game_active):
 		$GrassNode.position.x += GRASS_SPEED * delta
 		$HousesNode.position.x += HOUSE_SPEED * delta
 		
@@ -43,7 +41,7 @@ func _process(delta):
 		print(spawn_speed)
 
 func _on_game_game_started() ->void:
-	game_started = true
+	Globals.is_game_active = true
 	$"../Timers/PilarSpawn".start()
 	$"../Timers/CloudSpawn".start()
 
@@ -72,6 +70,8 @@ func _on_level_up():
 		pass
 
 func stop():
+	Globals.is_game_active = false
+	Globals.is_game_finished = true
 	CLOUD_SPEED = 0
 	HOUSE_SPEED = 0
 	GRASS_SPEED = 0

@@ -28,6 +28,7 @@ func check_high_score():
 func reset_status() -> void:
 	SFX.restart_bgm()
 	Globals.is_game_active = false
+	Globals.is_game_finished = false
 	Globals.score = 0
 
 

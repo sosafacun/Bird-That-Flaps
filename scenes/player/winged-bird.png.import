@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm1gpye3281mk"
-path="res://.godot/imported/mouse-click.png-1831983f4426a37a256a831c2b989b49.ctex"
+uid="uid://dj2gd1gvpa5ab"
+path="res://.godot/imported/winged-bird.png-1655508040a760876dc8c8a626fd5495.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/mouse-click.png"
-dest_files=["res://.godot/imported/mouse-click.png-1831983f4426a37a256a831c2b989b49.ctex"]
+source_file="res://scenes/player/winged-bird.png"
+dest_files=["res://.godot/imported/winged-bird.png-1655508040a760876dc8c8a626fd5495.ctex"]
 
 [params]
 

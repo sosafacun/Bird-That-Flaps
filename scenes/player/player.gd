@@ -13,6 +13,9 @@ func _physics_process(_delta):
 func jump() -> void:
 	set_linear_velocity(Vector2(0,0))
 	linear_velocity.y += jump_strength
+	$AnimationPlayer.play("flap")
 
 func disable_collision() -> void:
+	$PlayerSprite.visible = false
+	$"Bird-dead".visible = true
 	$PlayerCollision.set_deferred("disabled", true)

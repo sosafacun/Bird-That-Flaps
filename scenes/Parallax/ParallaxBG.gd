@@ -22,6 +22,13 @@ var cloud: PackedScene = preload("res://scenes/objects/clouds/clouds.tscn")
 signal level_up
 
 func _process(delta):
+	
+	if($GrassNode/Grass.position.x == -277):
+		$GrassNode/Grass.position.x = 851
+	if($GrassNode/Grass2.position.x == -277):
+		$GrassNode/Grass2.position.x = 851
+	
+	
 	if(game_started):
 		$GrassNode.position.x += GRASS_SPEED * delta
 		$HousesNode.position.x += HOUSE_SPEED * delta
@@ -78,4 +85,7 @@ func _on_pilars_game_lost():
 	HOUSE_SPEED = 0
 	GRASS_SPEED = 0
 	pilar_speed = 0
-	
+	var tween: Tween = create_tween()
+	tween.tween_property($"../UI/BlackScreen", "color", Color('000000'), 1)
+	await tween.finished
+	get_tree().change_scene_to_file("res://scenes/utils/transition.tscn")

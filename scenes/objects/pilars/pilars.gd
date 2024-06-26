@@ -16,6 +16,7 @@ func _on_scoring_area_body_entered(_body):
 
 func _on_losin_area_body_entered(body:RigidBody2D):
 	body.sleeping = true
+	body.disable_collision()
 	Globals.is_game_active = false
 	SFX.play_loss()
 	game_lost.emit()

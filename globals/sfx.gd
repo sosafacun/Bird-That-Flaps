@@ -10,6 +10,9 @@ func play_loss():
 	$"0 - BGM".stop()
 	$"2 - Loss".play()
 
-
 func _on___loss_finished():
 	$"3 - AfterLoss".play()
+
+func restart_bgm():
+	$"3 - AfterLoss".stop()
+	play_bgm()

@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://bibkkmlmgmom8"]
+
+[ext_resource type="Script" path="res://scenes/utils/transition.gd" id="1_1uhyx"]
+[ext_resource type="Texture2D" uid="uid://saq3w5y1hhds" path="res://scenes/utils/end-screen.png" id="2_hc44b"]
+[ext_resource type="Theme" uid="uid://54com4xaym22" path="res://resources/fonts/theme.tres" id="3_7uut3"]
+[ext_resource type="Texture2D" uid="uid://b3ck1pilsl6sk" path="res://scenes/utils/try-again-buttons/try-again-normal.png" id="4_x345d"]
+[ext_resource type="Texture2D" uid="uid://k3prxw1sjii4" path="res://scenes/utils/try-again-buttons/return-main-menu-pressed.png" id="5_xv03y"]
+[ext_resource type="Texture2D" uid="uid://wd4kka3tosiw" path="res://scenes/utils/try-again-buttons/return-main-menu-hover.png" id="6_4qh5o"]
+[ext_resource type="Texture2D" uid="uid://dr7eaf7d0fret" path="res://scenes/utils/end-screen-buttons/return-main-menu-normal.png" id="7_t74vn"]
+[ext_resource type="Texture2D" uid="uid://bsfuql54egorp" path="res://scenes/utils/end-screen-buttons/return-main-menu-pressed.png" id="8_0cylj"]
+[ext_resource type="Texture2D" uid="uid://cpeq4d8hjdln0" path="res://scenes/utils/end-screen-buttons/return-main-menu-hover.png" id="9_nwv7v"]
+
+[node name="Transition" type="ColorRect"]
+offset_right = 501.0
+offset_bottom = 800.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_1uhyx")
+
+[node name="End-screen" type="Sprite2D" parent="."]
+position = Vector2(750, 400)
+texture = ExtResource("2_hc44b")
+
+[node name="ScreenContainer" type="VBoxContainer" parent="End-screen"]
+offset_left = -253.0
+offset_top = -207.0
+offset_right = 247.0
+offset_bottom = 229.0
+theme = ExtResource("3_7uut3")
+alignment = 1
+
+[node name="Highscore" type="Label" parent="End-screen/ScreenContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Highscore!"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="End-screen/ScreenContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Restart" type="TextureButton" parent="End-screen/ScreenContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_x345d")
+texture_pressed = ExtResource("5_xv03y")
+texture_hover = ExtResource("6_4qh5o")
+stretch_mode = 0
+
+[node name="MainMenu" type="TextureButton" parent="End-screen/ScreenContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_t74vn")
+texture_pressed = ExtResource("8_0cylj")
+texture_hover = ExtResource("9_nwv7v")
+stretch_mode = 0
+
+[connection signal="pressed" from="End-screen/ScreenContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="End-screen/ScreenContainer/MainMenu" to="." method="_on_main_menu_pressed"]

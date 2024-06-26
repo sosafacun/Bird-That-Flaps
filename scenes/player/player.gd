@@ -13,3 +13,6 @@ func _physics_process(_delta):
 func jump() -> void:
 	set_linear_velocity(Vector2(0,0))
 	linear_velocity.y += jump_strength
+
+func disable_collision() -> void:
+	$PlayerCollision.set_deferred("disabled", true)

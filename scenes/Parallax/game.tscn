@@ -13,7 +13,7 @@
 size = Vector2(512, 140)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqg3p"]
-size = Vector2(706, 82)
+size = Vector2(706, 90)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_g7l5y")
@@ -92,12 +92,12 @@ z_index = 1
 
 [node name="Grass" type="Sprite2D" parent="ParallaxBG/GrassNode"]
 z_index = -1
-position = Vector2(828, 404)
+position = Vector2(228, 400)
 texture = ExtResource("5_4duhu")
 
 [node name="Grass2" type="Sprite2D" parent="ParallaxBG/GrassNode"]
 z_index = -1
-position = Vector2(228, 404)
+position = Vector2(828, 400)
 texture = ExtResource("5_4duhu")
 
 [node name="HousesNode" type="Node2D" parent="ParallaxBG"]
@@ -140,7 +140,7 @@ shape = SubResource("RectangleShape2D_j11ce")
 [node name="BottomLimit" type="Area2D" parent="Limits"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/BottomLimit"]
-position = Vector2(269, 756)
+position = Vector2(269, 752)
 shape = SubResource("RectangleShape2D_kqg3p")
 
 [node name="Timers" type="Node" parent="."]

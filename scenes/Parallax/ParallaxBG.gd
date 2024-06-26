@@ -5,7 +5,7 @@ const ACCELERATION: int = -100
 
 var CLOUD_SPEED: int = -140
 var GRASS_SPEED: int = -70
-var HOUSE_SPEED: int = -30
+var HOUSE_SPEED: int = -80
 
 @onready var spawn_speed: float = 2
 @onready var spawn_timer_cut: float = 0.25
@@ -22,15 +22,29 @@ signal level_up
 func _process(delta):
 	
 	if(Globals.is_game_active):
-		$GrassNode.position.x += GRASS_SPEED * delta
-		$HousesNode.position.x += HOUSE_SPEED * delta
+		$GrassNode/Grass.position.x += GRASS_SPEED * delta
+		$GrassNode/Grass2.position.x += GRASS_SPEED * delta
+		$HousesNode/Houses.position.x += HOUSE_SPEED * delta
+		$HousesNode/Houses2.position.x += HOUSE_SPEED * delta
+		
+		if($GrassNode/Grass.position.x <= -316):
+			$GrassNode/Grass.position.x = 828
+		if($GrassNode/Grass2.position.x <= -316):
+			$GrassNode/Grass2.position.x = 828
+		
+		if($HousesNode/Houses.position.x <= -316):
+			$HousesNode/Houses.position.x = 828
+		if($HousesNode/Houses2.position.x <= -316):
+			$HousesNode/Houses2.position.x = 828
+		
 		
 		for clouds in get_tree().get_nodes_in_group('Clouds'):
 			clouds.position.x += CLOUD_SPEED * delta
 		for pilar in get_tree().get_nodes_in_group('Pilars'):
 			pilar.connect("game_lost", _on_pilars_game_lost)
 			pilar.position.x += pilar_speed * delta
-		
+			
+			
 	if(Globals.score % 5 == 0 
 	and Globals.score != 0
 	and Globals.has_leveled_up == false):

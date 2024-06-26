@@ -92,12 +92,12 @@ z_index = 9
 
 [node name="Grass" parent="ParallaxBG/GrassNode" instance=ExtResource("4_b2ge7")]
 z_index = 1
-position = Vector2(251, 790)
+position = Vector2(-295, 793)
 collision_layer = 16
 
 [node name="Grass2" parent="ParallaxBG/GrassNode" instance=ExtResource("4_b2ge7")]
 z_index = 1
-position = Vector2(851, 790)
+position = Vector2(305, 796)
 collision_layer = 16
 
 [node name="HousesNode" type="Node2D" parent="ParallaxBG"]

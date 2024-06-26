@@ -23,12 +23,6 @@ signal level_up
 
 func _process(delta):
 	
-	if($GrassNode/Grass.position.x == -277):
-		$GrassNode/Grass.position.x = 851
-	if($GrassNode/Grass2.position.x == -277):
-		$GrassNode/Grass2.position.x = 851
-	
-	
 	if(game_started):
 		$GrassNode.position.x += GRASS_SPEED * delta
 		$HousesNode.position.x += HOUSE_SPEED * delta
